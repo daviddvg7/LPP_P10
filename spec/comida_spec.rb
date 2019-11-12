@@ -16,5 +16,9 @@ RSpec.describe Comida do
   it "Debe existir la candidad de terreno utilizado en m2 año." do
 	expect(x.terreno).not_to be nil
   end
+	
+  it "Existe un método para obtener el nombre del alimento." do
+	expect(x.nombre).to eq("carne de vaca")
+  end
 
 end
