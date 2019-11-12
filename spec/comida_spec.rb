@@ -33,4 +33,8 @@ RSpec.describe Comida do
 	expect(x.to_s).to eq("El alimento carne de vaca posee 21.1 g de proteínas, 0.0 g de carbohidratos, 3.1 g de lípidos, genera 50.0 kg de CO2 por porción y supone un uso de 164.0 m2 de terreno al año")
   end
 
+  it "Existe un método para obtener el valor energético de un alimento." do
+	expect(x.kcal).to eq(112.3)
+  end
+
 end
