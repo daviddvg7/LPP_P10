@@ -1,5 +1,5 @@
 class Comida
-	attr_reader :nombre :proteinas :carbos :lipidos :gases :terreno
+	attr_reader :nombre :proteinas :carbos :lipidos :gases :terreno :kcal
 
 	def initialize(a, b, c, d, e, f)
 		@nombre=a
@@ -8,6 +8,7 @@ class Comida
 		@lipidos=d
 		@gases=e
 		@terreno=f
+		@kcal= (b*4) + (c*4) + (d*9)
 	end
 
 	def to_s
