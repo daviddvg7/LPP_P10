@@ -1,7 +1,8 @@
 class Comida
-	attr_reader :nombre
+	attr_reader :nombre :gases
 
-	def initialize(x)
+	def initialize(x, y)
 		@nombre=x
+		@gases=y
 	end
 end
