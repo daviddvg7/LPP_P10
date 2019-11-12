@@ -2,7 +2,7 @@ require 'lib/comida/clase_comida'
 
 RSpec.describe Comida do
   before (:all) do
-  	x=Comida::Comida.new("carne de vaca", 50.0, 164.0)
+  	x=Comida::Comida.new("carne de vaca", 21.1, 0.0, 3.1, 50.0, 164.0)
   end
 
   it "Debe existir un nombre para el alimento" do
@@ -27,6 +27,10 @@ RSpec.describe Comida do
 
   it "Existe un método para obtener el terreno utilizado." do
 	expect(x.terreno).to eq(164.0)
+  end
+
+  it "Existe un método para obtener el alimento formateado." do
+	expect(x.to_s).to eq("El alimento carne de vaca posee 21.1 g de proteínas, 0.0 g de carbohidratos, 3.1 g de lípidos, genera 50.0 kg de CO2 por porción y supone un uso de 164.0 m2 de terreno al año")
   end
 
 end
