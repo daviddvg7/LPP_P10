@@ -26,4 +26,16 @@ class Comida
 		h.each{|elemento| imp=imp+elemento.terreno}
 		return imp
 	end
+
+	def impacto_mujer_gases(m)
+		imp=0
+		m.each{|elemento| imp=imp+elemento.gases}
+		return imp
+	end
+
+	def impacto_mujer_terreno(m)
+		imp=0
+		m.each{|elemento| imp=imp+elemento.terreno}
+		return imp
+	end
 end
