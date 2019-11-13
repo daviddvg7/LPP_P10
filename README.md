@@ -1,8 +1,11 @@
-# Comida
+# **Lenguajes y Paradigmas de Programación**
+## **Práctica 6**
+### **Desarrollo Dirigido por Pruebas**
+#### David Valverde Gómez. PE104. 13/11/19
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/comida`. To experiment with that code, run `bin/console` for an interactive prompt.
+##### *Objetivo de la práctica*
 
-TODO: Delete this and the text above, and describe your gem
+Utilizar el paradigma de Programación Orientada a Objetos, la herramienta de gestión de dependencias Bundler y la metodologı́a de Desarrollo Dirigido por Pruebas para gestionar el cálculo del Impacto Ambiental de la alimentación de las personas.
 
 ## Installation
 

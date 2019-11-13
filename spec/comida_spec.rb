@@ -3,6 +3,12 @@ require 'lib/comida/clase_comida'
 RSpec.describe Comida do
   before (:all) do
   	x=Comida::Comida.new("carne de vaca", 21.1, 0.0, 3.1, 50.0, 164.0)
+	lentejas=Comida::Comida.new("lentejas", 23.5, 52.0, 1.4, 0.4, 3.4)
+	cerdo= Comida::Comida.new("cerdo", 21.5, 0.0, 6.3, 7.6, 11.0)
+	tofu= Comida::Comida.new("tofu", 8.0, 1.9, 4.8, 2.0, 2.2)
+	cerveza= Comida::Comida.new("cerveza", 0.5, 3.6, 0.0, 0.24, 0.22)
+
+	h=[lentejas, cerdo, tofu, cerveza, cerveza]
   end
 
   it "Debe existir un nombre para el alimento" do
@@ -35,6 +41,14 @@ RSpec.describe Comida do
 
   it "Existe un método para obtener el valor energético de un alimento." do
 	expect(x.kcal).to eq(112.3)
+  end
+
+  it "Se calcula correctamente el impacto ambiental diario de un hombre de 20-39 años (gases)."
+	expect(x.impacto_hombre_gases(h)).to eq(10.48)
+  end
+
+  it "Se calcula correctamente el impacto ambiental diario de un hombre de 20-39 años (terreno)."
+	expect(x.impacto_hombre_terreno(h)).to eq(17.04)
   end
 
 end
