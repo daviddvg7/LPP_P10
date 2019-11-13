@@ -47,19 +47,42 @@ RSpec.describe Comida do
   end
 
   it "Se calcula correctamente el impacto ambiental diario de un hombre de 20-39 años (gases)." do
-	expect(x.impacto_hombre_gases(h)).to eq(10.48)
+	expect(impacto_hombre_gases(h)).to eq(10.48)
   end
 
   it "Se calcula correctamente el impacto ambiental diario de un hombre de 20-39 años (terreno)." do
-	expect(x.impacto_hombre_terreno(h)).to eq(17.04)
+	expect(impacto_hombre_terreno(h)).to eq(17.04)
   end
 
   it "Se calcula correctamente el impacto ambiental diario de una mujer de 20-39 años (gases)." do
-	expect(x.impacto_mujer_gases(m)).to eq(56.0)
+	expect(impacto_mujer_gases(m)).to eq(56.0)
   end
 
   it "Se calcula correctamente el impacto ambiental diario de una mujer de 20-39 años (terreno)." do
-	expect(x.impacto_mujer_terreno(m)).to eq(167.7)
+	expect(impacto_mujer_terreno(m)).to eq(167.7)
   end
 
+  def impacto_hombre_gases(h)
+	imp=0
+	h.each{|elemento| imp=imp+elemento.gases}
+	return imp
+  end
+
+  def impacto_hombre_terreno(h)
+	imp=0
+	h.each{|elemento| imp=imp+elemento.terreno}
+	return imp
+  end
+
+  def impacto_mujer_gases(m)
+	imp=0
+	m.each{|elemento| imp=imp+elemento.gases}
+	return imp
+  end
+
+  def impacto_mujer_terreno(m)
+	imp=0
+	m.each{|elemento| imp=imp+elemento.terreno}
+	return imp
+  end
 end
