@@ -14,4 +14,16 @@ class Comida
 	def to_s
 		puts "El alimento #{@nombre} posee #{@proteinas} g de proteínas, #{@carbos} g de carbohidratos, #{@lipidos} g de lípidos, genera #{@gases} kg de CO2 por porción y supone un uso de #{@terreno} m2 de terreno al año"
 	end
+
+	def impacto_hombre_gases(h)
+		imp=0
+		h.each{|elemento| imp=imp+elemento.gases}
+		return imp
+	end
+
+	def impacto_hombre_terreno(h)
+		imp=0
+		h.each{|elemento| imp=imp+elemento.terreno}
+		return imp
+	end
 end
