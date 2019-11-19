@@ -1,5 +1,6 @@
 require 'spec_helper'
 require './lib/comida/clase_comida'
+require './lib/comida/lista'
 
 RSpec.describe Comida do
  
@@ -88,7 +89,8 @@ RSpec.describe Comida do
 end
 
 RSpec.describe Lista do
-  nodo1=Nodo.new(nil, 5, nil)
+  nodo1=Nodo.new(5, nil, nil)
   it " Debe existir un Nodo de la lista con sus datos, su siguiente y su previo" do
     expect(nodo1).not_to be nil
+  end
 end
