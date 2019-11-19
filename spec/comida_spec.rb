@@ -90,24 +90,34 @@ end
 
 RSpec.describe Lista do
   nodo1=Nodo.new(5, nil, nil)
-  lista=Lista.new(nodo1)
-  nodo2=Nodo.new(14, nil, nil)
-  vector=[nodo1, nodo2]
+  lista=Lista.new()
+  vector=[15, 20]
 
   it " Debe existir un Nodo de la lista con sus datos, su siguiente y su previo" do
     expect(nodo1).not_to be nil
+    expect(nodo1).to respond_to(:value)
+    expect(nodo1).to respond_to(:next)
+    expect(nodo1).to respond_to(:prev)
+
   end
 
   it "Debe existir una Lista con su cabeza y su cola" do
     expect(lista).not_to be nil
+    expect(lista).to respond_to(:head)
+    expect(lista).to respond_to(:tail)
+
   end
 
-  it "Se puede insertar un elemento en la Lista" do
-    expect(lista.insert(nodo2)).not_to be nil
+  it "Se puede insertar un elemento en la Lista por la cola" do
+    expect(lista.insert_tail(10)).not_to be nil
+  end
+
+  it "Se puede insertar un elemento en la Lista por la cabeza" do
+    expect(lista.insert_head(5)).not_to be nil
   end
 
   it "Se pueden insertar varios elementos en la Lista" do
-    expect(lista.inserts(vector)).not_to be nil
+    expect(lista.inserts_tail(vector)).not_to be nil
   end
 
   it "Se extrae el primer elemento de la Lista" do 

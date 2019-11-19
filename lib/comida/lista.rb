@@ -1,24 +1,46 @@
 Nodo=Struct.new(:value, :next, :prev)
 
 class Lista
-    def initialize(nodo)
-        @head=nodo
-        @tail=nodo
-        @head.next=nodo
-        @tail.prev=nodo
+    
+    attr_reader :head, :tail
+
+    def initialize()
+        @head=nil
+        @tail=nil
     end
 
-    def insert(nodo)
-        @tail.next=nodo
-        nodo.prev=@tail
-        @tail=nodo
+    def insert_tail(valor)
+        aux=Nodo.new(valor, nil, nil)
+        if @head==nil
+            @head=aux
+            @tail=aux
+        elsif @head==@tail
+            @head.next=aux
+            aux.prev=head
+            @tail=aux
+        else
+            @tail.next=aux
+            aux.prev=@tail
+            @tail=aux
+        end
     end
 
-    def inserts(vector)
-        vector.each{|nodo|
-            @tail.next=nodo
-            nodo.prev=@tail
-            @tail=nodo}
+    def inserts_tail(vector)
+        vector.each{|valor|
+            aux=Nodo.new(valor, nil, nil)
+            if @head==nil
+                @head=aux
+                @tail=aux
+            elsif @head==@tail
+                @head.next=aux
+                aux.prev=@head
+                @tail=aux
+            else
+                @tail.next=aux
+                aux.prev=@tail
+                @tail=aux
+            end
+        }
     end
 
     def pull_head()
