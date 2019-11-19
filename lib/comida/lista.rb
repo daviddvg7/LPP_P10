@@ -25,6 +25,23 @@ class Lista
         end
     end
 
+    def insert_head(valor)
+        aux=Nodo.new(valor, nil, nil)
+        if @head==nil
+            @head=aux
+            @tail=aux
+        elsif @head==@tail
+            @head.prev=aux
+            @tail.prev=head
+            aux.next=head
+            @head=aux
+        else
+            @head.prev=aux
+            aux.next=@head
+            @head=aux
+        end
+    end
+
     def inserts_tail(vector)
         vector.each{|valor|
             aux=Nodo.new(valor, nil, nil)
