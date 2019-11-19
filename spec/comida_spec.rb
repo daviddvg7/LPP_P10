@@ -90,7 +90,13 @@ end
 
 RSpec.describe Lista do
   nodo1=Nodo.new(5, nil, nil)
+  lista=Lista.new(nodo1)
+
   it " Debe existir un Nodo de la lista con sus datos, su siguiente y su previo" do
     expect(nodo1).not_to be nil
+  end
+
+  it "Debe existir una Lista con su cabeza y su cola" do
+    expect(lista).not_to be nil
   end
 end
