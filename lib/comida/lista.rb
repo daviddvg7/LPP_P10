@@ -79,7 +79,7 @@ class Lista
         }
     end
 
-    def pull_head()
+    def pop_head()
         nodo=@head
         aux=@head.next
         aux.prev=nil

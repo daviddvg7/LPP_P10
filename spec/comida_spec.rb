@@ -126,7 +126,13 @@ RSpec.describe Lista do
   end
 
   it "Se extrae el primer elemento de la Lista" do 
-    head=lista.pull_head()
+    head=lista.pop_head()
     expect(head.value).to eql(0)
   end
+
+  it "Se extrae el último elemento de la Lista" do
+    tail=lista.pop_tail()
+    expect(tail.value).to eql(25)
+  end
+
 end
