@@ -14,4 +14,10 @@ class Lista
         @tail=nodo
     end
 
+    def inserts(vector)
+        vector.each{|nodo|
+            @tail.next=nodo
+            nodo.prev=@tail
+            @tail=nodo}
+    end
 end
