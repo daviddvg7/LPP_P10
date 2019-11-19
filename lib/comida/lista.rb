@@ -86,4 +86,12 @@ class Lista
         @head=aux
         return nodo
     end
+
+    def pop_tail()
+        nodo=@tail
+        aux=@tail.prev
+        aux.next=nil
+        @tail=aux
+        return nodo
+    end
 end
