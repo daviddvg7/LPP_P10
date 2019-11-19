@@ -92,6 +92,7 @@ RSpec.describe Lista do
   nodo1=Nodo.new(5, nil, nil)
   lista=Lista.new(nodo1)
   nodo2=Nodo.new(14, nil, nil)
+  vector=[nodo1, nodo2]
 
   it " Debe existir un Nodo de la lista con sus datos, su siguiente y su previo" do
     expect(nodo1).not_to be nil
@@ -103,5 +104,9 @@ RSpec.describe Lista do
 
   it "Se puede insertar un elemento en la Lista" do
     expect(lista.insert(nodo2)).not_to be nil
+  end
+
+  it "Se pueden insertar varios elementos en la Lista" do
+    expect(lista.inserts(vector)).not_to be nil
   end
 end
