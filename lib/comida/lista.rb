@@ -20,4 +20,6 @@ class Lista
             nodo.prev=@tail
             @tail=nodo}
     end
+
+    
 end

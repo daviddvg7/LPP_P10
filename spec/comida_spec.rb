@@ -109,4 +109,9 @@ RSpec.describe Lista do
   it "Se pueden insertar varios elementos en la Lista" do
     expect(lista.inserts(vector)).not_to be nil
   end
+
+  it "Se extrae el primer elemento de la Lista" do 
+    head=lista.pull_head()
+    expect(head.value).to eql(5)
+  end
 end
