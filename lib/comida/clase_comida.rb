@@ -16,6 +16,6 @@ module Comida
 		"El alimento #{@nombre} posee #{@proteinas} g de proteínas, #{@carbos} g de carbohidratos, #{@lipidos} g de lípidos, genera #{@gases} kg de CO2 por porción y supone un uso de #{@terreno} m2 de terreno al año"
 	end
 
-	Z
+
   end
 end

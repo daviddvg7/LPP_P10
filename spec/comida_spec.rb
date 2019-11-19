@@ -86,3 +86,9 @@ RSpec.describe Comida do
 	return imp
   end
 end
+
+RSpec.describe Lista do
+  nodo1=Nodo.new(nil, 5, nil)
+  it " Debe existir un Nodo de la lista con sus datos, su siguiente y su previo" do
+    expect(nodo1).not_to be nil
+end
