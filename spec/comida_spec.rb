@@ -91,7 +91,8 @@ end
 RSpec.describe Lista do
   nodo1=Nodo.new(5, nil, nil)
   lista=Lista.new()
-  vector=[15, 20]
+  vector=[20, 25]
+  vector1=[0, 5]
 
   it " Debe existir un Nodo de la lista con sus datos, su siguiente y su previo" do
     expect(nodo1).not_to be nil
@@ -109,19 +110,23 @@ RSpec.describe Lista do
   end
 
   it "Se puede insertar un elemento en la Lista por la cola" do
-    expect(lista.insert_tail(10)).not_to be nil
+    expect(lista.insert_tail(15)).not_to be nil
   end
 
   it "Se puede insertar un elemento en la Lista por la cabeza" do
-    expect(lista.insert_head(5)).not_to be nil
+    expect(lista.insert_head(10)).not_to be nil
   end
 
-  it "Se pueden insertar varios elementos en la Lista" do
+  it "Se pueden insertar varios elementos en la Lista por la cola" do
     expect(lista.inserts_tail(vector)).not_to be nil
+  end
+
+  it "Se pueden insertar varios elementos en la Lista por la cabeza" do
+    expect(lista.inserts_head(vector1)).not_to be nil
   end
 
   it "Se extrae el primer elemento de la Lista" do 
     head=lista.pull_head()
-    expect(head.value).to eql(5)
+    expect(head.value).to eql(0)
   end
 end
