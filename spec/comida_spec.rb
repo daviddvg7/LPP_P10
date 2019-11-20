@@ -178,7 +178,7 @@ RSpec.describe Lista do
       expect(espanola.gases()).to eql(75.3)
       expect(vasca.gases()).to eql(7.3)
       expect(vegetaria.gases()).to eql(29.5)
-      expect(vegetaliana.gases()).to eql(6)
+      expect(vegetaliana.gases()).to eql(6.0)
       expect(locura.gases()).to eql(193.2)
     end
 

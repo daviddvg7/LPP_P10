@@ -94,4 +94,16 @@ class Lista
         @tail=aux
         return nodo
     end
+
+    def gases()
+        gas=0
+        aux=@head
+
+        loop do
+            gas+=(aux.value).gases
+            aux=aux.next
+        break if aux==nil
+        end
+        return gas
+    end
 end
