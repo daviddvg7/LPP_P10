@@ -106,4 +106,17 @@ class Lista
         end
         return gas
     end
+    
+    def gases_anual()
+        gas=0
+        aux=@head
+
+        loop do
+            gas+=(aux.value).gases
+            aux=aux.next
+        break if aux==nil
+        end
+        gas=gas*365
+        return gas
+    end
 end
