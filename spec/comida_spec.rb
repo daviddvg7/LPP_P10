@@ -182,6 +182,13 @@ RSpec.describe Lista do
       expect(locura.gases()).to eql(193.2)
     end
 
+    it "Crear expectativa para estimar las emisiones anuales de gases de efecto invernadero para cada dieta." do
+      expect(espanola.gases_anual()).to eql(27484.5)
+      expect(vasca.gases_anual()).to eql(2664.5)
+      expect(vegetaria.gases_anual()).to eql(10767.5)
+      expect(vegetaliana.gases_anual()).to eql(2190.0)
+      expect(locura.gases_anual()).to eql(70518.0)
+    end
   end
 
 end
