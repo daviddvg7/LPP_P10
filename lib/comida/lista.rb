@@ -119,4 +119,16 @@ class Lista
         gas=gas*365
         return gas
     end
+
+    def terreno()
+        terreno=0
+        aux=@head
+        loop do
+            terreno+=(aux.value).terreno
+            aux=aux.next
+        break if aux==nil
+        end
+        
+        return terreno.round(1)
+    end
 end
