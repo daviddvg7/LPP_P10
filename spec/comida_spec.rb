@@ -93,46 +93,95 @@ RSpec.describe Lista do
   lista=Lista.new()
   vector=[20, 25]
   vector1=[0, 5]
+  carne_de_vaca=Comida::Comida.new("carne de vaca", 21.1, 0.0, 3.1, 50.0, 164.0)
+  carne_cordero= Comida::Comida.new("carne de cordero", 18.0, 0.0, 17.0, 20.0, 185.0)
+  camarones=Comida::Comida.new("camarones", 17.6, 1.5, 0.6, 18.0, 2.0)
+  chocolate= Comida::Comida.new("chocolate", 5.3, 47.0, 30.0, 2.3, 3.4)
+  salmon= Comida::Comida.new("salmón", 19.9, 0.0, 13.6, 6.0, 3.7)
+  cerdo= Comida::Comida.new("cerdo", 21.5, 0.0, 6.3, 7.6, 11.0)
+  pollo=Comida::Comida.new("pollo", 20.6, 0.0, 5.6, 5.7, 7.1)
+  queso=Comida::Comida.new("queso", 25.0, 1.3, 33.0, 11.0, 41.0)
+  cerveza= Comida::Comida.new("cerveza", 0.5, 3.6, 0.0, 0.24, 0.22)
+  leche= Comida::Comida.new("leche", 3.3, 4.8, 3.2, 3.2, 8.9)
+  huevo=Comida::Comida.new("huevo", 13.0, 1.1, 11.0, 4.2, 5.7)
+  cafe=Comida::Comida.new("cafe", 0.1, 0.0, 0.0, 0.4, 0.3)
+  tofu= Comida::Comida.new("tofu", 8.0, 1.9, 4.8, 2.0, 2.2)
+  lentejas= Comida::Comida.new("lentejas", 23.5, 52.0, 1.4, 0.4, 3.4)
+  nuez=Comida::Comida.new("nuez", 20.0, 21.0, 54.0, 0.3, 7.9)
+  
+  d_espanola=[carne_de_vaca, chocolate, queso, queso, lentejas, nuez, nuez]
+  d_vasca=[lentejas, lentejas, lentejas, lentejas, lentejas, chocolate, chocolate, nuez, lentejas]
+  d_vegetaria=[huevo, chocolate, queso, queso, lentejas, nuez, nuez]
+  d_vegetaliana= [tofu, chocolate, nuez, lentejas, lentejas, nuez, nuez]
+  d_locura=[carne_de_vaca, carne_de_vaca, carne_cordero, carne_cordero, carne_cordero, pollo, pollo, cerdo, cerdo, nuez, nuez, salmon]
 
-  it " Debe existir un Nodo de la lista con sus datos, su siguiente y su previo" do
-    expect(nodo1).not_to be nil
-    expect(nodo1).to respond_to(:value)
-    expect(nodo1).to respond_to(:next)
-    expect(nodo1).to respond_to(:prev)
+  espanola=Lista.new()
+  espanola.inserts_tail(d_espanola)
+  vasca=Lista.new()
+  vasca.inserts_tail(d_vasca)
+  vegetaria=Lista.new()
+  vegetaria.inserts_tail(d_vegetaria)
+  vegetaliana=Lista.new()
+  vegetaliana.inserts_tail(d_vegetaliana)
+  locura=Lista.new()
+  locura.inserts_tail(d_locura)
 
+  context "Probando getters" do
+    it " Debe existir un Nodo de la lista con sus datos, su siguiente y su previo" do
+      expect(nodo1).not_to be nil
+      expect(nodo1).to respond_to(:value)
+      expect(nodo1).to respond_to(:next)
+      expect(nodo1).to respond_to(:prev)
+
+    end
+
+    it "Debe existir una Lista con su cabeza y su cola" do
+      expect(lista).not_to be nil
+      expect(lista).to respond_to(:head)
+      expect(lista).to respond_to(:tail)
+
+    end
   end
 
-  it "Debe existir una Lista con su cabeza y su cola" do
-    expect(lista).not_to be nil
-    expect(lista).to respond_to(:head)
-    expect(lista).to respond_to(:tail)
+  context "Probando inserciones" do
+    it "Se puede insertar un elemento en la Lista por la cola" do
+      expect(lista.insert_tail(15)).not_to be nil
+    end
 
+    it "Se puede insertar un elemento en la Lista por la cabeza" do
+      expect(lista.insert_head(10)).not_to be nil
+    end
+
+    it "Se pueden insertar varios elementos en la Lista por la cola" do
+      expect(lista.inserts_tail(vector)).not_to be nil
+    end
+
+    it "Se pueden insertar varios elementos en la Lista por la cabeza" do
+      expect(lista.inserts_head(vector1)).not_to be nil
+    end
   end
 
-  it "Se puede insertar un elemento en la Lista por la cola" do
-    expect(lista.insert_tail(15)).not_to be nil
+  context "Probando extracciones" do
+    it "Se extrae el primer elemento de la Lista" do 
+      head=lista.pop_head()
+      expect(head.value).to eql(0)
+    end
+
+    it "Se extrae el último elemento de la Lista" do
+      tail=lista.pop_tail()
+      expect(tail.value).to eql(25)
+    end
   end
 
-  it "Se puede insertar un elemento en la Lista por la cabeza" do
-    expect(lista.insert_head(10)).not_to be nil
-  end
+  context "Probando dietas" do
+    it "Crear expectativas para estimar las emisiones diarias de gases de efecto invernadero para cada dieta." do
+      expect(espanola.gases()).to eql(75.3)
+      expect(vasca.gases()).to eql(7.3)
+      expect(vegetaria.gases()).to eql(29.5)
+      expect(vegetaliana.gases()).to eql(6)
+      expect(locura.gases()).to eql(193.2)
+    end
 
-  it "Se pueden insertar varios elementos en la Lista por la cola" do
-    expect(lista.inserts_tail(vector)).not_to be nil
-  end
-
-  it "Se pueden insertar varios elementos en la Lista por la cabeza" do
-    expect(lista.inserts_head(vector1)).not_to be nil
-  end
-
-  it "Se extrae el primer elemento de la Lista" do 
-    head=lista.pop_head()
-    expect(head.value).to eql(0)
-  end
-
-  it "Se extrae el último elemento de la Lista" do
-    tail=lista.pop_tail()
-    expect(tail.value).to eql(25)
   end
 
 end
