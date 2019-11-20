@@ -189,6 +189,14 @@ RSpec.describe Lista do
       expect(vegetaliana.gases_anual()).to eql(2190.0)
       expect(locura.gases_anual()).to eql(70518.0)
     end
+
+    it "Crear expectitivas para estimar los metros cuadrados de uso de terreno para cada dieta." do
+      expect(espanola.terreno()).to eql(268.6)
+      expect(vasca.terreno()).to eql(35.1)
+      expect(vegetaria.terreno()).to eql(110.3)
+      expect(vegetaliana.terreno()).to eql(36.1)
+      expect(locura.terreno()).to eql(938.7)
+    end
   end
 
 end
