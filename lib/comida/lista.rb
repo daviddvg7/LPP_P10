@@ -2,6 +2,7 @@ Nodo=Struct.new(:value, :next, :prev)
 
 class Lista
 
+    include Enumerable
     attr_reader :head, :tail
     
     def initialize()
@@ -132,6 +133,14 @@ class Lista
         return terreno.round(1)
     end
 
+    def each()
+        aux=@head
 
+        loop do 
+            yield aux.value
+            aux=aux.next
+        break if aux==nil
+        end
+    end
 
 end
