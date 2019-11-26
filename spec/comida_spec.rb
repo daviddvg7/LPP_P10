@@ -20,71 +20,71 @@ RSpec.describe Comida do
   end
 
   it "Debe existir la candidad de emisión de gases de efecto invernadero en kgCO2eq." do
-	expect(x.gases).not_to be nil
+	    expect(x.gases).not_to be nil
   end
 
   it "Debe existir la candidad de terreno utilizado en m2 año." do
-	expect(x.terreno).not_to be nil
+	    expect(x.terreno).not_to be nil
   end
 	
   it "Existe un método para obtener el nombre del alimento." do
-	expect(x.nombre).to eq("carne de vaca")
+	    expect(x.nombre).to eq("carne de vaca")
   end
 
   it "Existe un método para obtener las emisiones de gases de efecto invernadero." do
-	expect(x.gases).to eq(50.0)
+	    expect(x.gases).to eq(50.0)
   end
 
   it "Existe un método para obtener el terreno utilizado." do
-	expect(x.terreno).to eq(164.0)
+	    expect(x.terreno).to eq(164.0)
   end
 
   it "Existe un método para obtener el alimento formateado." do
-	expect(x.to_s).to eq("El alimento carne de vaca posee 21.1 g de proteínas, 0.0 g de carbohidratos, 3.1 g de lípidos, genera 50.0 kg de CO2 por porción y supone un uso de 164.0 m2 de terreno al año")
+	    expect(x.to_s).to eq("El alimento carne de vaca posee 21.1 g de proteínas, 0.0 g de carbohidratos, 3.1 g de lípidos, genera 50.0 kg de CO2 por porción y supone un uso de 164.0 m2 de terreno al año")
   end
 
   it "Existe un método para obtener el valor energético de un alimento." do
-	expect(x.kcal).to eq(112.3)
+	    expect(x.kcal).to eq(112.3)
   end
 
   it "Se calcula correctamente el impacto ambiental diario de un hombre de 20-39 años (gases)." do
-	expect(impacto_hombre_gases(h)).to eq(10.48)
+	    expect(impacto_hombre_gases(h)).to eq(10.48)
   end
 
   it "Se calcula correctamente el impacto ambiental diario de un hombre de 20-39 años (terreno)." do
-	expect(impacto_hombre_terreno(h)).to eq(17.04)
+	    expect(impacto_hombre_terreno(h)).to eq(17.04)
   end
 
   it "Se calcula correctamente el impacto ambiental diario de una mujer de 20-39 años (gases)." do
-	expect(impacto_mujer_gases(m)).to eq(56.0)
+	    expect(impacto_mujer_gases(m)).to eq(56.0)
   end
 
   it "Se calcula correctamente el impacto ambiental diario de una mujer de 20-39 años (terreno)." do
-	expect(impacto_mujer_terreno(m)).to eq(167.7)
+	    expect(impacto_mujer_terreno(m)).to eq(167.7)
   end
 
   def impacto_hombre_gases(h)
-	imp=0
-	h.each{|elemento| imp=imp+elemento.gases}
-	return imp
+	    imp=0
+	    h.each{|elemento| imp=imp+elemento.gases}
+	    return imp
   end
 
   def impacto_hombre_terreno(h)
-	imp=0
-	h.each{|elemento| imp=imp+elemento.terreno}
-	return imp
+      imp=0
+      h.each{|elemento| imp=imp+elemento.terreno}
+      return imp
   end
 
   def impacto_mujer_gases(m)
-	imp=0
-	m.each{|elemento| imp=imp+elemento.gases}
-	return imp
+      imp=0
+      m.each{|elemento| imp=imp+elemento.gases}
+      return imp
   end
 
   def impacto_mujer_terreno(m)
-	imp=0
-	m.each{|elemento| imp=imp+elemento.terreno}
-	return imp
+      imp=0
+      m.each{|elemento| imp=imp+elemento.terreno}
+      return imp
   end
 end
 
@@ -93,6 +93,7 @@ RSpec.describe Lista do
   lista=Lista.new()
   vector=[20, 25]
   vector1=[0, 5]
+
   carne_de_vaca=Comida::Comida.new("carne de vaca", 21.1, 0.0, 3.1, 50.0, 164.0)
   carne_cordero= Comida::Comida.new("carne de cordero", 18.0, 0.0, 17.0, 20.0, 185.0)
   camarones=Comida::Comida.new("camarones", 17.6, 1.5, 0.6, 18.0, 2.0)
@@ -143,7 +144,7 @@ RSpec.describe Lista do
     end
   end
 
-  context "Probando inserciones" do
+  context "Probando inserciones" do 
     it "Se puede insertar un elemento en la Lista por la cola" do
       expect(lista.insert_tail(15)).not_to be nil
     end
@@ -200,3 +201,26 @@ RSpec.describe Lista do
   end
 
 end
+
+RSpec.describe Comida do
+
+  carne_de_vaca=Comida::Comida.new("carne de vaca", 21.1, 0.0, 3.1, 50.0, 164.0)
+  carne_cordero= Comida::Comida.new("carne de cordero", 18.0, 0.0, 17.0, 20.0, 185.0)
+  camarones=Comida::Comida.new("camarones", 17.6, 1.5, 0.6, 18.0, 2.0)
+
+
+  it "Comparaciones" do
+   
+    expect(carne_de_vaca < carne_cordero).to eq(true)
+    expect(carne_de_vaca <= carne_cordero).to eq(true)
+
+    expect(carne_de_vaca > carne_cordero).to eq(false)
+    expect(carne_de_vaca >= carne_cordero).to eq(false)
+
+    expect(carne_de_vaca == carne_de_vaca). to eq(true)
+
+    expect(carne_de_vaca.between?(camarones, carne_cordero)).to eq(true)
+    expect(camarones.clamp(carne_de_vaca, carne_cordero)).to eq(carne_de_vaca)
+  end
+end   
+

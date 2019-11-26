@@ -1,5 +1,6 @@
 module Comida
   class Comida
+	include Comparable
 	attr_reader :nombre, :proteinas, :carbos, :lipidos, :gases, :terreno, :kcal
 
 	def initialize(a, b, c, d, e, f)
