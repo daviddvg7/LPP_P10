@@ -270,5 +270,9 @@ RSpec.describe Plato do
     it "Existe un conjunto de cantidades de alimentos" do
       expect(plato).to respond_to(:cantidades)
     end
+
+    it "Porcentaje de proteínas" do
+      expect(plato.get_proteinas).to eq("0.18%")
+    end
   end
 end
