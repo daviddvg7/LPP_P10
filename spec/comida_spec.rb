@@ -252,6 +252,7 @@ RSpec.describe Plato do
   cerveza= Comida::Comida.new("cerveza", 0.5, 3.6, 0.0, 0.24, 0.22)
 
   ejemplo=[carne_cordero, huevo, cerveza]
+  ejemplo_gramos=[82.3, 16.2, 89.0]
   lista=Lista.new()
   lista.inserts_tail(ejemplo)
 
@@ -261,10 +262,13 @@ RSpec.describe Plato do
     it "Se obtiene el nombre del plato" do
       expect(plato.nombre).to eq("prueba")
     end
-    
+
     it "Existe un conjunto de alimentos" do
       expect(plato).to respond_to(:alimentos)
     end
 
+    it "Existe un conjunto de cantidades de alimentos" do
+      expect(plato.to respond_to(:cantidades))
+    end
   end
 end
