@@ -255,8 +255,10 @@ RSpec.describe Plato do
   ejemplo_gramos=[82.3, 16.2, 89.0]
   lista=Lista.new()
   lista.inserts_tail(ejemplo)
+  lista_gramos=Lista.new()
+  lista_gramos.inserts_tail(ejemplo_gramos)
 
-  plato=Plato.new("prueba", lista, ejemplo_gramos)
+  plato=Plato.new("prueba", lista, lista_gramos)
 
   context "Pruebas de la clase Plato" do
     it "Se obtiene el nombre del plato" do
@@ -272,7 +274,7 @@ RSpec.describe Plato do
     end
 
     it "Porcentaje de proteínas" do
-      expect(plato.get_proteinas).to eq("0.18%")
+      expect(plato.get_proteinas).to eq("0.9%")
     end
   end
 end
