@@ -224,3 +224,21 @@ RSpec.describe Comida do
   end
 end   
 
+RSpec.describe Lista do
+
+  carne_de_vaca=Comida::Comida.new("carne de vaca", 21.1, 0.0, 3.1, 50.0, 164.0)
+  carne_cordero= Comida::Comida.new("carne de cordero", 18.0, 0.0, 17.0, 20.0, 185.0)
+  camarones=Comida::Comida.new("camarones", 17.6, 1.5, 0.6, 18.0, 2.0)
+
+  comida=[carne_de_vaca, carne_cordero, camarones]
+  prueba=Lista.new()
+  prueba.inserts_tail(comida)
+
+  it "Enumeraciones" do
+    expect(prueba.collect{|n| n.proteinas>20}).to eq([true, false, false])
+    expect(prueba.select{|i| i.proteinas>20}).to eq([carne_de_vaca])
+    expect(prueba.max).to eq(carne_cordero)
+    expect(prueba.min).to eq(camarones)
+    expect(prueba.sort).to eq([camarones, carne_de_vaca, carne_cordero])
+  end
+end 

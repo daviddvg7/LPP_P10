@@ -1,9 +1,9 @@
 Nodo=Struct.new(:value, :next, :prev)
 
 class Lista
-    
-    attr_reader :head, :tail
 
+    attr_reader :head, :tail
+    
     def initialize()
         @head=nil
         @tail=nil
@@ -131,4 +131,7 @@ class Lista
         
         return terreno.round(1)
     end
+
+
+
 end
