@@ -255,13 +255,16 @@ RSpec.describe Plato do
   lista=Lista.new()
   lista.inserts_tail(ejemplo)
 
-  plato=Plato.new("prueba")
+  plato=Plato.new("prueba", lista)
 
   context "Pruebas de la clase Plato" do
     it "Se obtiene el nombre del plato" do
       expect(plato.nombre).to eq("prueba")
     end
-
+    
+    it "Existe un conjunto de alimentos" do
+      expect(plato).to respond_to(:alimentos)
+    end
 
   end
 end
