@@ -1,6 +1,8 @@
 require 'spec_helper'
 require './lib/comida/clase_comida'
 require './lib/comida/lista'
+require './lib/comida/plato'
+
 
 RSpec.describe Comida do
  
@@ -253,11 +255,13 @@ RSpec.describe Plato do
   lista=Lista.new()
   lista.inserts_tail(ejemplo)
 
-  plato=Plato.new("prueba", lista)
+  plato=Plato.new("prueba")
 
   context "Pruebas de la clase Plato" do
     it "Se obtiene el nombre del plato" do
       expect(plato.nombre).to eq("prueba")
     end
+
+
   end
 end
