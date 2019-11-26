@@ -242,3 +242,22 @@ RSpec.describe Lista do
     expect(prueba.sort).to eq([camarones, carne_de_vaca, carne_cordero])
   end
 end 
+
+RSpec.describe Plato do
+
+  carne_cordero= Comida::Comida.new("carne de cordero", 18.0, 0.0, 17.0, 20.0, 185.0)
+  huevo=Comida::Comida.new("huevo", 13.0, 1.1, 11.0, 4.2, 5.7)
+  cerveza= Comida::Comida.new("cerveza", 0.5, 3.6, 0.0, 0.24, 0.22)
+
+  ejemplo=[carne_cordero, huevo, cerveza]
+  lista=Lista.new()
+  lista.inserts_tail(ejemplo)
+
+  plato=Plato.new("prueba", lista)
+
+  context "Pruebas de la clase Plato" do
+    it "Se obtiene el nombre del plato" do
+      expect(plato.nombre).to eq("prueba")
+    end
+  end
+end
