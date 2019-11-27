@@ -286,5 +286,9 @@ RSpec.describe Plato do
     it "Porcentaje de hidratos" do
       expect(plato.get_carbos).to eq("0.2%")
     end
+
+    it "Valor Calórico Total" do
+      expect(plato.get_kcal).to eq(22.5)
+    end
   end
 end
