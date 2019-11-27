@@ -403,6 +403,9 @@ RSpec.describe Plato_hijo do
     vegetaliana=Plato.new("vegetaliana", l_vegetaliana, lc_vegetaliana)
     locura=Plato.new("locura", l_locura, lc_locura)
 
+    v_menu=[espanola, vasca, vegetaria, vegetaliana, locura]
+    menu=Lista.new()
+    menu.inserts_tail(v_menu)
 
     it "Comparaciones" do
 
@@ -419,7 +422,14 @@ RSpec.describe Plato_hijo do
 
     end
 
-
+    it "Enumeraciones" do
+      
+      expect(menu.collect{|n| n.get_kcal>3000.0}).to eq([true, true, true, true, false])
+      expect(menu.select{|i| i.get_kcal<3000.0}).to eq([locura])
+      expect(menu.max).to eq(vasca)
+      expect(menu.min).to eq(locura)
+      expect(menu.sort).to eq([locura, espanola, vegetaria, vegetaliana, vasca])
+      
+    end
   end
-
 end
