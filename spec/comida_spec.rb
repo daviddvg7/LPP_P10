@@ -276,19 +276,19 @@ RSpec.describe Plato do
     end
 
     it "Porcentaje de proteínas" do
-      expect(plato.get_proteinas).to eq("0.9%")
+      expect(plato.get_proteinas).to eq("9.3%")
     end
 
     it "Porcentaje de lípidos" do
-      expect(plato.get_lipidos).to eq("0.8%")
+      expect(plato.get_lipidos).to eq("8.4%")
     end
 
     it "Porcentaje de hidratos" do
-      expect(plato.get_carbos).to eq("0.2%")
+      expect(plato.get_carbos).to eq("1.8%")
     end
 
     it "Valor Calórico Total" do
-      expect(plato.get_kcal).to eq(22.5)
+      expect(plato.get_kcal).to eq(224.9)
     end
 
     it "Se obtiene el plato formateado" do
@@ -321,6 +321,10 @@ RSpec.describe Plato_hijo do
     
     it "Estimación de los metros cuadrados de uso de terreno." do
       expect(plato2.get_terreno).to eq(15.3)
+    end
+
+    it "Se obtiene la eficiencia energética formateada." do
+      expect(plato2.to_s).to eq("El plato prueba 2 genera 1.7 kg de CO2 y requiere 15.3 m2 de terreno")
     end
   end
 

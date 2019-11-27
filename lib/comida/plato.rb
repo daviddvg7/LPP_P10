@@ -14,7 +14,7 @@ class Plato
         cantidad_total=0
 
         loop do
-            aux=(i.value).proteinas*(f.value/1000)
+            aux=(i.value).proteinas*(f.value/100)
             proteinas_total+=aux
             cantidad_total += f.value
             i=i.next
@@ -32,7 +32,7 @@ class Plato
         cantidad_total=0
 
         loop do
-            aux=(i.value).lipidos*(f.value/1000)
+            aux=(i.value).lipidos*(f.value/100)
             lipidos_total+=aux
             cantidad_total += f.value
             i=i.next
@@ -50,7 +50,7 @@ class Plato
         cantidad_total=0
 
         loop do
-            aux=(i.value).carbos*(f.value/1000)
+            aux=(i.value).carbos*(f.value/100)
             carbos_total+=aux
             cantidad_total += f.value
             i=i.next
@@ -67,7 +67,7 @@ class Plato
         kcal_total=0
 
         loop do
-            aux=(i.value).kcal*(f.value/1000)
+            aux=(i.value).kcal*(f.value/100)
             kcal_total+=aux            
             i=i.next
             f=f.next
@@ -106,30 +106,30 @@ class Plato_hijo < Plato
     def get_gases()
         i=@alimentos.head
         f=@cantidades.head
-        gases_total=0
+        @gases_total=0
 
         loop do
             aux=(i.value).gases*(f.value/1000)
-            gases_total+=aux            
+            @gases_total+=aux            
             i=i.next
             f=f.next
         break if i==nil
         end
-        return gases_total.round(1)
+        return @gases_total.round(1)
     end
 
     def get_terreno()
         i=@alimentos.head
         f=@cantidades.head
-        terreno_total=0
+        @terreno_total=0
 
         loop do
             aux=(i.value).terreno*(f.value/1000)
-            terreno_total+=aux            
+            @terreno_total+=aux            
             i=i.next
             f=f.next
         break if i==nil
         end
-        return terreno_total.round(1)
+        return @terreno_total.round(1)
     end
 end 
