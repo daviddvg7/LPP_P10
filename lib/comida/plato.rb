@@ -132,4 +132,8 @@ class Plato_hijo < Plato
         end
         return @terreno_total.round(1)
     end
+
+    def to_s
+        "El plato #{@nombre} genera #{@gases_total.round(1)} kg de CO2 y requiere #{@terreno_total.round(1)} m2 de terreno"
+    end
 end 
