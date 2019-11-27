@@ -335,7 +335,9 @@ RSpec.describe Plato_hijo do
       expect(plato2.instance_of? Plato_hijo).to eq(true)
     end
 
-    
+    it "Comprobando jerarquía del objeto" do
+      expect(plato2.is_a? Plato).to eq(true)
+    end
   end
 
     
