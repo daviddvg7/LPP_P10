@@ -326,7 +326,12 @@ RSpec.describe Plato_hijo do
     it "Se obtiene la eficiencia energética formateada." do
       expect(plato2.to_s).to eq("El plato prueba2 genera 1.7 kg de CO2 y requiere 15.3 m2 de terreno")
     end
+
+    it "Comprobando clase del objeto" do
+      expect(plato2.class).to eq(Plato_hijo)
+    end
   end
 
+    
 
 end
