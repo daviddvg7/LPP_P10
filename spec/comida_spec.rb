@@ -278,7 +278,7 @@ RSpec.describe Plato do
     end
 
     it "Porcentaje de lípidos" do
-      expect(plato.get_lipidos).to eq("0.9%")
+      expect(plato.get_lipidos).to eq("0.8%")
     end
   end
 end
