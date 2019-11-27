@@ -299,22 +299,21 @@ end
 
 RSpec.describe Plato_hijo do
 
-  carne_cordero= Comida::Comida.new("carne de cordero", 18.0, 0.0, 17.0, 20.0, 185.0)
-  huevo=Comida::Comida.new("huevo", 13.0, 1.1, 11.0, 4.2, 5.7)
-  cerveza= Comida::Comida.new("cerveza", 0.5, 3.6, 0.0, 0.24, 0.22)
-
-  
-  ejemplo=[carne_cordero, huevo, cerveza]
-  ejemplo_gramos=[82.3, 16.2, 89.0]
-  lista=Lista.new()
-  lista.inserts_tail(ejemplo)
-  lista_gramos=Lista.new()
-  lista_gramos.inserts_tail(ejemplo_gramos)
-
-  plato2=Plato_hijo.new("prueba2", lista, lista_gramos)
-
   context "Probando clase hija" do
     
+    carne_cordero= Comida::Comida.new("carne de cordero", 18.0, 0.0, 17.0, 20.0, 185.0)
+    huevo=Comida::Comida.new("huevo", 13.0, 1.1, 11.0, 4.2, 5.7)
+    cerveza= Comida::Comida.new("cerveza", 0.5, 3.6, 0.0, 0.24, 0.22)
+  
+    
+    ejemplo=[carne_cordero, huevo, cerveza]
+    ejemplo_gramos=[82.3, 16.2, 89.0]
+    lista=Lista.new()
+    lista.inserts_tail(ejemplo)
+    lista_gramos=Lista.new()
+    lista_gramos.inserts_tail(ejemplo_gramos)
+  
+    plato2=Plato_hijo.new("prueba2", lista, lista_gramos)
     it "Valor total de la emisiones diarias de de gases de efecto invernadero." do
       expect(plato2.get_gases).to eq(1.7)
     end
@@ -340,6 +339,87 @@ RSpec.describe Plato_hijo do
     end
   end
 
+  context "Comparaciones de platos" do
+
+    carne_de_vaca=Comida::Comida.new("carne de vaca", 21.1, 0.0, 3.1, 50.0, 164.0)
+    carne_cordero= Comida::Comida.new("carne de cordero", 18.0, 0.0, 17.0, 20.0, 185.0)
+    camarones=Comida::Comida.new("camarones", 17.6, 1.5, 0.6, 18.0, 2.0)
+    chocolate= Comida::Comida.new("chocolate", 5.3, 47.0, 30.0, 2.3, 3.4)
+    salmon= Comida::Comida.new("salmón", 19.9, 0.0, 13.6, 6.0, 3.7)
+    cerdo= Comida::Comida.new("cerdo", 21.5, 0.0, 6.3, 7.6, 11.0)
+    pollo=Comida::Comida.new("pollo", 20.6, 0.0, 5.6, 5.7, 7.1)
+    queso=Comida::Comida.new("queso", 25.0, 1.3, 33.0, 11.0, 41.0)
+    cerveza= Comida::Comida.new("cerveza", 0.5, 3.6, 0.0, 0.24, 0.22)
+    leche= Comida::Comida.new("leche", 3.3, 4.8, 3.2, 3.2, 8.9)
+    huevo=Comida::Comida.new("huevo", 13.0, 1.1, 11.0, 4.2, 5.7)
+    cafe=Comida::Comida.new("cafe", 0.1, 0.0, 0.0, 0.4, 0.3)
+    tofu= Comida::Comida.new("tofu", 8.0, 1.9, 4.8, 2.0, 2.2)
+    lentejas= Comida::Comida.new("lentejas", 23.5, 52.0, 1.4, 0.4, 3.4)
+    nuez=Comida::Comida.new("nuez", 20.0, 21.0, 54.0, 0.3, 7.9)
+
+    d_espanola=[carne_de_vaca, chocolate, queso, lentejas, nuez]
+    c_espanola= [100, 100, 200, 100, 200]
+
+    d_vasca=[lentejas, chocolate, nuez]
+    c_vasca=[600, 200, 100]
+
+    d_vegetaria=[huevo, chocolate, queso, lentejas, nuez]
+    c_vegetaria=[100, 100, 200, 100, 200]
+
+    d_vegetaliana= [tofu, chocolate, nuez, lentejas]
+    c_vegetaliana=[100, 100, 300, 200]
+
+    d_locura=[carne_de_vaca, carne_cordero, pollo, cerdo, nuez, salmon]
+    c_locura=[200, 300, 200, 200, 200, 100]
+   
+    l_espanola=Lista.new()
+    l_espanola.inserts_head(d_espanola)
+    lc_espanola=Lista.new()
+    lc_espanola.inserts_head(c_espanola)
+
+    l_vasca=Lista.new()
+    l_vasca.inserts_head(d_vasca)
+    lc_vasca=Lista.new()
+    lc_vasca.inserts_head(c_vasca)
+
+    l_vegetaria=Lista.new()
+    l_vegetaria.inserts_head(d_vegetaria)
+    lc_vegetaria=Lista.new()
+    lc_vegetaria.inserts_head(c_vegetaria)
+
+    l_vegetaliana=Lista.new()
+    l_vegetaliana.inserts_head(d_vegetaliana)
+    lc_vegetaliana=Lista.new()
+    lc_vegetaliana.inserts_head(c_vegetaliana)
     
+    l_locura=Lista.new()
+    l_locura.inserts_head(d_locura)
+    lc_locura=Lista.new()
+    lc_locura.inserts_head(c_locura)
+
+    espanola=Plato.new("española", l_espanola, lc_espanola)
+    vasca=Plato.new("vasca", l_vasca, lc_vasca)
+    vegetaria=Plato.new("vegetaria", l_vegetaria, lc_vegetaria)
+    vegetaliana=Plato.new("vegetaliana", l_vegetaliana, lc_vegetaliana)
+    locura=Plato.new("locura", l_locura, lc_locura)
+
+
+    it "Comparaciones" do
+
+      expect(espanola < vasca).to eq(true)
+      expect(vegetaliana <= vegetaria).to eq(true)
+
+      expect(locura > vegetaliana).to eq(false)
+      expect(espanola >= vegetaria).to eq(false)
+
+      expect(locura == locura). to eq(true)
+
+      expect(espanola.between?(vegetaria, locura)).to eq(true)
+      expect(vegetaria.clamp(espanola, locura)).to eq(carne_de_vaca)
+
+    end
+
+
+  end
 
 end
