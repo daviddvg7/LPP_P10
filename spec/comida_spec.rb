@@ -314,8 +314,13 @@ RSpec.describe Plato_hijo do
   plato2=Plato_hijo.new("prueba2", lista, lista_gramos)
 
   context "Probando clase hija" do
+    
     it "Valor total de la emisiones diarias de de gases de efecto invernadero." do
       expect(plato2.get_gases).to eq(1.7)
+    end
+    
+    it "Estimación de los metros cuadrados de uso de terreno." do
+      expect(plato2.get_terreno).to eq(15.3)
     end
   end
 
