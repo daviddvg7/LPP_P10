@@ -290,5 +290,9 @@ RSpec.describe Plato do
     it "Valor Calórico Total" do
       expect(plato.get_kcal).to eq(22.5)
     end
+
+    it "Se obtiene el plato formateado" do
+      expect(plato.to_s).to eq("El plato prueba está compuesto de 82.3 g de carne de cordero, 16.2 g de huevo y 89 g de cerveza")
+    end
   end
 end
