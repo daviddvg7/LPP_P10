@@ -96,3 +96,4 @@ class Plato
         return texto
     end
 end
+

@@ -296,3 +296,28 @@ RSpec.describe Plato do
     end
   end
 end
+
+Rspec.describe Plato_hijo do
+
+  carne_cordero= Comida::Comida.new("carne de cordero", 18.0, 0.0, 17.0, 20.0, 185.0)
+  huevo=Comida::Comida.new("huevo", 13.0, 1.1, 11.0, 4.2, 5.7)
+  cerveza= Comida::Comida.new("cerveza", 0.5, 3.6, 0.0, 0.24, 0.22)
+
+  
+  ejemplo=[carne_cordero, huevo, cerveza]
+  ejemplo_gramos=[82.3, 16.2, 89.0]
+  lista=Lista.new()
+  lista.inserts_tail(ejemplo)
+  lista_gramos=Lista.new()
+  lista_gramos.inserts_tail(ejemplo_gramos)
+
+  plato2=Plato_hijo.new("prueba2", lista, lista_gramos)
+
+  context "Probando clase hija" do
+    it "Valor total de la emisiones diarias de de gases de efecto invernadero." do
+      expect(plato2.get_gases).to eq(1.7)
+    end
+  end
+
+
+end
