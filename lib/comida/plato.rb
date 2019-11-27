@@ -60,4 +60,19 @@ class Plato
         @carbos=((carbos_total/cantidad_total)*100).round(1)
         return "#{@carbos}%"
     end
+
+    def get_kcal()
+        i=@alimentos.head
+        f=@cantidades.head
+        kcal_total=0
+
+        loop do
+            aux=(i.value).kcal*(f.value/1000)
+            kcal_total+=aux            
+            i=i.next
+            f=f.next
+        break if i==nil
+        end
+        return kcal_total.round(1)
+    end
 end
