@@ -297,7 +297,7 @@ RSpec.describe Plato do
   end
 end
 
-Rspec.describe Plato_hijo do
+RSpec.describe Plato_hijo do
 
   carne_cordero= Comida::Comida.new("carne de cordero", 18.0, 0.0, 17.0, 20.0, 185.0)
   huevo=Comida::Comida.new("huevo", 13.0, 1.1, 11.0, 4.2, 5.7)

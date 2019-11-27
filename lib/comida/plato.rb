@@ -97,3 +97,24 @@ class Plato
     end
 end
 
+class Plato_hijo < Plato
+
+    def initialize(x, y, z)
+        super(x, y, z)
+    end
+
+    def get_gases()
+        i=@alimentos.head
+        f=@cantidades.head
+        gases_total=0
+
+        loop do
+            aux=(i.value).gases*(f.value/1000)
+            gases_total+=aux            
+            i=i.next
+            f=f.next
+        break if i==nil
+        end
+        return gases_total.round(1)
+    end
+end
