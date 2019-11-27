@@ -75,4 +75,24 @@ class Plato
         end
         return kcal_total.round(1)
     end
+
+    def to_s
+        i=@alimentos.head
+        f=@cantidades.head
+        texto="El plato #{@nombre} está compuesto de "
+
+        loop do
+
+            if i.next==nil
+                texto += "y " + (f.value).to_s + " g de " + (i.value).nombre + "."
+            else
+                texto += (f.value).to_s + " g de " + (i.value).nombre + ", "
+            end
+            
+            i=i.next
+            f=f.next
+        break if i==nil
+        end
+        return texto
+    end
 end

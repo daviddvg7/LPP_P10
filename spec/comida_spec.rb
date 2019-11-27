@@ -292,7 +292,7 @@ RSpec.describe Plato do
     end
 
     it "Se obtiene el plato formateado" do
-      expect(plato.to_s).to eq("El plato prueba está compuesto de 82.3 g de carne de cordero, 16.2 g de huevo y 89 g de cerveza")
+      expect(plato.to_s).to eq("El plato prueba está compuesto de 82.3 g de carne de cordero, 16.2 g de huevo, y 89.0 g de cerveza.")
     end
   end
 end
