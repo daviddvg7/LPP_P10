@@ -117,4 +117,19 @@ class Plato_hijo < Plato
         end
         return gases_total.round(1)
     end
-end
+
+    def get_terreno()
+        i=@alimentos.head
+        f=@cantidades.head
+        terreno_total=0
+
+        loop do
+            aux=(i.value).terreno*(f.value/1000)
+            terreno_total+=aux            
+            i=i.next
+            f=f.next
+        break if i==nil
+        end
+        return terreno_total.round(1)
+    end
+end 
