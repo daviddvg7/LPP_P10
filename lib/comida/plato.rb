@@ -42,4 +42,22 @@ class Plato
         @lipidos=((lipidos_total/cantidad_total)*100).round(1)
         return "#{@lipidos}%"
     end
+
+    def get_carbos()
+        i=@alimentos.head
+        f=@cantidades.head
+        carbos_total=0
+        cantidad_total=0
+
+        loop do
+            aux=(i.value).carbos*(f.value/1000)
+            carbos_total+=aux
+            cantidad_total += f.value
+            i=i.next
+            f=f.next
+        break if i==nil
+        end
+        @carbos=((carbos_total/cantidad_total)*100).round(1)
+        return "#{@carbos}%"
+    end
 end

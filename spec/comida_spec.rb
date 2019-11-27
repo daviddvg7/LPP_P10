@@ -251,6 +251,7 @@ RSpec.describe Plato do
   huevo=Comida::Comida.new("huevo", 13.0, 1.1, 11.0, 4.2, 5.7)
   cerveza= Comida::Comida.new("cerveza", 0.5, 3.6, 0.0, 0.24, 0.22)
 
+  
   ejemplo=[carne_cordero, huevo, cerveza]
   ejemplo_gramos=[82.3, 16.2, 89.0]
   lista=Lista.new()
@@ -260,6 +261,7 @@ RSpec.describe Plato do
 
   plato=Plato.new("prueba", lista, lista_gramos)
 
+  
   context "Pruebas de la clase Plato" do
     it "Se obtiene el nombre del plato" do
       expect(plato.nombre).to eq("prueba")
@@ -282,7 +284,7 @@ RSpec.describe Plato do
     end
 
     it "Porcentaje de hidratos" do
-      expect(plato.get_hidratos).to eq("0.8%")
+      expect(plato.get_carbos).to eq("0.2%")
     end
   end
 end
