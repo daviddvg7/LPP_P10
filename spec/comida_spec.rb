@@ -330,6 +330,12 @@ RSpec.describe Plato_hijo do
     it "Comprobando clase del objeto" do
       expect(plato2.class).to eq(Plato_hijo)
     end
+
+    it "Comprobando tipo del objeto" do
+      expect(plato2.instance_of? Plato_hijo).to eq(true)
+    end
+
+    
   end
 
     
