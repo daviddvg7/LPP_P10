@@ -1,4 +1,6 @@
 class Plato
+
+    include Comparable
     attr_reader :nombre, :alimentos, :cantidades
 
     def initialize(x, y, z)
@@ -94,6 +96,10 @@ class Plato
         break if i==nil
         end
         return texto
+    end
+
+    def <=>(other)
+        get_kcal<=> other.get_kcal
     end
 end
 

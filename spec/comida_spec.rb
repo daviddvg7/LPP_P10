@@ -407,15 +407,15 @@ RSpec.describe Plato_hijo do
     it "Comparaciones" do
 
       expect(espanola < vasca).to eq(true)
-      expect(vegetaliana <= vegetaria).to eq(true)
+      expect(vegetaria <= vegetaliana).to eq(true)
 
       expect(locura > vegetaliana).to eq(false)
       expect(espanola >= vegetaria).to eq(false)
 
       expect(locura == locura). to eq(true)
 
-      expect(espanola.between?(vegetaria, locura)).to eq(true)
-      expect(vegetaria.clamp(espanola, locura)).to eq(carne_de_vaca)
+      expect(espanola.between?(locura, vasca)).to eq(true)
+      expect(vasca.clamp(locura, espanola)).to eq(espanola)
 
     end
 
