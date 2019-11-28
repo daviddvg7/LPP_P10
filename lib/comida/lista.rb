@@ -19,7 +19,7 @@ class Lista
             @head.next=aux
             aux.prev=head
             @tail=aux
-        else
+        else 
             @tail.next=aux
             aux.prev=@tail
             @tail=aux

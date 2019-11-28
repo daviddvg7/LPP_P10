@@ -176,7 +176,7 @@ RSpec.describe Lista do
     end
   end
 
-  context "Probando dietas" do
+  context "Probando dietas" do 
     it "Crear expectativas para estimar las emisiones diarias de gases de efecto invernadero para cada dieta." do
       expect(espanola.gases()).to eql(75.3)
       expect(vasca.gases()).to eql(7.3)
@@ -239,7 +239,7 @@ RSpec.describe Lista do
   it "Enumeraciones" do
     expect(prueba.collect{|n| n.proteinas>20}).to eq([true, false, false])
     expect(prueba.select{|i| i.proteinas>20}).to eq([carne_de_vaca])
-    expect(prueba.max).to eq(carne_cordero)
+    expect(prueba.max).to eq(carne_cordero) 
     expect(prueba.min).to eq(camarones)
     expect(prueba.sort).to eq([camarones, carne_de_vaca, carne_cordero])
   end
@@ -338,7 +338,9 @@ RSpec.describe Plato_hijo do
       expect(plato2.is_a? Plato).to eq(true)
     end
   end
+end
 
+RSpec.describe Plato do
   context "Comparaciones de platos" do
 
     carne_de_vaca=Comida::Comida.new("carne de vaca", 21.1, 0.0, 3.1, 50.0, 164.0)
