@@ -440,5 +440,9 @@ RSpec.describe Plato_hijo do
     it "Máxima huella" do
       expect(menu_diet.max).to eq(espanola)
     end
+
+    it "Incrementar precio" do
+      expect(precios.collect{|i| i*((menu_diet.max).get_impacto)}).to eq([30, 24, 40, 36, 44])
+    end
   end
 end
