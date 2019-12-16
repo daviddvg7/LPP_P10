@@ -98,6 +98,17 @@ class Plato
         return texto
     end
 
+    def get_huella_energetica
+        
+        if (self.get_kcal < 670)
+            return 1
+        elsif (self.get_kcal > 830)
+            return 3
+        else
+            return 2
+        end
+    end
+
     def <=>(other)
         get_kcal<=> other.get_kcal
     end
@@ -141,5 +152,24 @@ class Plato_hijo < Plato
 
     def to_s
         "El plato #{@nombre} genera #{@gases_total.round(1)} kg de CO2 y requiere #{@terreno_total.round(1)} m2 de terreno"
+    end
+
+    def get_huella_ambiental
+        if (self.get_gases < 800)
+            return 1
+        elsif (self.get_gases > 1200)
+            return 3
+        else 
+            return 2
+        end
+    end
+
+    def get_impacto
+        impacto = (self.get_huella_energetica + self.get_huella_ambiental)/2
+        return impacto.round(0)
+    end
+
+    def <=>(other)
+        self.get_impacto <=> other.get_impacto
     end
 end 
