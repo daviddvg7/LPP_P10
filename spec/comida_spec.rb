@@ -431,5 +431,13 @@ RSpec.describe Plato_hijo do
       expect(menu.sort).to eq([locura, espanola, vegetaria, vegetaliana, vasca])
       
     end
+
+
+    menu_diet = [espanola, vasca, vegetaria, vegetaliana, locura]
+    precios= [15, 12, 20, 18, 22]
+
+    it "Máxima huella" do
+      expect(menu_diet.max).to eq(espanola)
+    end
   end
 end
