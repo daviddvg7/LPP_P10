@@ -398,30 +398,30 @@ RSpec.describe Plato_hijo do
     lc_locura=Lista.new()
     lc_locura.inserts_head(c_locura)
 
-    espanola=Plato_hijo.new("española", l_espanola, lc_espanola)
-    vasca=Plato_hijo.new("vasca", l_vasca, lc_vasca)
-    vegetaria=Plato_hijo.new("vegetaria", l_vegetaria, lc_vegetaria)
-    vegetaliana=Plato_hijo.new("vegetaliana", l_vegetaliana, lc_vegetaliana)
-    locura=Plato_hijo.new("locura", l_locura, lc_locura)
+    espanola=Plato.new("española", l_espanola, lc_espanola)
+    vasca=Plato.new("vasca", l_vasca, lc_vasca)
+    vegetaria=Plato.new("vegetaria", l_vegetaria, lc_vegetaria)
+    vegetaliana=Plato.new("vegetaliana", l_vegetaliana, lc_vegetaliana)
+    locura=Plato.new("locura", l_locura, lc_locura)
 
     v_menu=[espanola, vasca, vegetaria, vegetaliana, locura]
     menu=Lista.new()
     menu.inserts_tail(v_menu)
 
-    # it "Comparaciones" do
+    it "Comparaciones" do
 
-    #   expect(espanola < vasca).to eq(true)
-    #   expect(vegetaria <= vegetaliana).to eq(true)
+      expect(espanola < vasca).to eq(true)
+      expect(vegetaria <= vegetaliana).to eq(true)
 
-    #   expect(locura > vegetaliana).to eq(false)
-    #   expect(espanola >= vegetaria).to eq(false)
+      expect(locura > vegetaliana).to eq(false)
+      expect(espanola >= vegetaria).to eq(false)
 
-    #   expect(locura == locura). to eq(true)
+      expect(locura == locura). to eq(true)
 
-    #   expect(espanola.between?(locura, vasca)).to eq(true)
-    #   expect(vasca.clamp(locura, espanola)).to eq(espanola)
+      expect(espanola.between?(locura, vasca)).to eq(true)
+      expect(vasca.clamp(locura, espanola)).to eq(espanola)
 
-    # end
+    end
 
     it "Enumeraciones" do
       
@@ -433,12 +433,17 @@ RSpec.describe Plato_hijo do
       
     end
 
+    espanola2=Plato_hijo.new("española", l_espanola, lc_espanola)
+    vasca2=Plato_hijo.new("vasca", l_vasca, lc_vasca)
+    vegetaria2=Plato_hijo.new("vegetaria", l_vegetaria, lc_vegetaria)
+    vegetaliana2=Plato_hijo.new("vegetaliana", l_vegetaliana, lc_vegetaliana)
+    locura2=Plato_hijo.new("locura", l_locura, lc_locura)
 
-    menu_diet = [espanola, vasca, vegetaria, vegetaliana, locura]
+    menu_diet = [espanola2, vasca2, vegetaria2, vegetaliana2, locura2]
     precios= [15, 12, 20, 18, 22]
 
     it "Máxima huella" do
-      expect(menu_diet.max).to eq(espanola)
+      expect(menu_diet.max).to eq(espanola2)
     end
 
     it "Incrementar precio" do

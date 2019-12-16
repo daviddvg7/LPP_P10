@@ -1,14 +1,21 @@
+# encoding: utf-8
+# Author::    David Valverde
+
+# Clase para representar un plato como un conjunto de alimentos y cantidades
+# Incluye el módulo enumerable
 class Plato
 
     include Comparable
     attr_reader :nombre, :alimentos, :cantidades
 
+    # Asigna los valores de la clase
     def initialize(x, y, z)
         @nombre=x
         @alimentos=y
         @cantidades=z
     end
 
+    # Devuelve las proteínas totales del plato
     def get_proteinas()
         i=@alimentos.head
         f=@cantidades.head
@@ -27,6 +34,7 @@ class Plato
         return "#{@proteinas}%"
     end
 
+    # Devuelve los lípidos totales del plato
     def get_lipidos()
         i=@alimentos.head
         f=@cantidades.head
@@ -45,6 +53,7 @@ class Plato
         return "#{@lipidos}%"
     end
 
+    # Devuelve los carbohidratos totales del plato
     def get_carbos()
         i=@alimentos.head
         f=@cantidades.head
@@ -63,6 +72,7 @@ class Plato
         return "#{@carbos}%"
     end
 
+    # Devuelve las kilocalorías totales del plato
     def get_kcal()
         i=@alimentos.head
         f=@cantidades.head
@@ -78,6 +88,7 @@ class Plato
         return kcal_total.round(1)
     end
 
+    # Devuelve el plato formateado con todos sus alimentos
     def to_s
         i=@alimentos.head
         f=@cantidades.head
@@ -98,6 +109,7 @@ class Plato
         return texto
     end
 
+    # Devuelve la huella energética del plato
     def get_huella_energetica
         
         if (self.get_kcal < 670)
@@ -109,17 +121,21 @@ class Plato
         end
     end
 
+    # Compara los platos por su valor energético
     def <=>(other)
         get_kcal<=> other.get_kcal
     end
 end
 
+# Clase hija que trata los datos ambientales de los alimentos
 class Plato_hijo < Plato
 
+    # Asigna los valores y llama al initialize de la clase padre
     def initialize(x, y, z)
         super(x, y, z)
     end
 
+    # Devuelve los gases totales del plato
     def get_gases()
         i=@alimentos.head
         f=@cantidades.head
@@ -135,6 +151,7 @@ class Plato_hijo < Plato
         return @gases_total.round(1)
     end
 
+    # Devuelve el uso de terreno total del plato
     def get_terreno()
         i=@alimentos.head
         f=@cantidades.head
@@ -150,10 +167,12 @@ class Plato_hijo < Plato
         return @terreno_total.round(1)
     end
 
+    # Devuelve el plato formateado con sus datos de gases y uso de terreno
     def to_s
         "El plato #{@nombre} genera #{@gases_total.round(1)} kg de CO2 y requiere #{@terreno_total.round(1)} m2 de terreno"
     end
 
+    # Devuelve la huella ambiental del plato
     def get_huella_ambiental
         if (self.get_gases < 800)
             return 1
@@ -164,11 +183,13 @@ class Plato_hijo < Plato
         end
     end
 
+    # Devuelve el impacto del plato
     def get_impacto
         impacto = (self.get_huella_energetica + self.get_huella_ambiental)/2
         return impacto.round(0)
     end
 
+    # Compara los platos por su impacto
     def <=>(other)
         self.get_impacto <=> other.get_impacto
     end
