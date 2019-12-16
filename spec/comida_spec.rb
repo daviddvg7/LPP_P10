@@ -314,6 +314,7 @@ RSpec.describe Plato_hijo do
     lista_gramos.inserts_tail(ejemplo_gramos)
   
     plato2=Plato_hijo.new("prueba2", lista, lista_gramos)
+
     it "Valor total de la emisiones diarias de de gases de efecto invernadero." do
       expect(plato2.get_gases).to eq(1.7)
     end
@@ -432,6 +433,23 @@ RSpec.describe Plato do
       expect(menu.min).to eq(locura)
       expect(menu.sort).to eq([locura, espanola, vegetaria, vegetaliana, vasca])
       
+    end
+
+    espanola2=Plato_hijo.new("española", l_espanola, lc_espanola)
+    vasca2=Plato_hijo.new("vasca", l_vasca, lc_vasca)
+    vegetaria2=Plato_hijo.new("vegetaria", l_vegetaria, lc_vegetaria)
+    vegetaliana2=Plato_hijo.new("vegetaliana", l_vegetaliana, lc_vegetaliana)
+    locura2=Plato_hijo.new("locura", l_locura, lc_locura)
+
+    menu_diet = [espanola2, vasca2, vegetaria2, vegetaliana2, locura2]
+    precios= [15, 12, 20, 18, 22]
+
+    it "Máxima huella" do
+      expect(menu_diet.max).to eq(espanola2)
+    end
+
+    it "Incrementar precio" do
+      expect(precios.collect{|i| i*((menu_diet.max).get_impacto)}).to eq([30, 24, 40, 36, 44])
     end
   end
 end

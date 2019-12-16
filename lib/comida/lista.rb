@@ -1,15 +1,24 @@
+# encoding: utf-8
+# Author::    David Valverde
+
+# Se crea un struct para representar los nodos de una lista
 Nodo=Struct.new(:value, :next, :prev)
 
+# Clase que representa una lista doblemente enlazada
+# Incluye el módulo Enumerable
 class Lista
 
     include Enumerable
     attr_reader :head, :tail
     
+    # Inicializa la lista vacía
     def initialize()
         @head=nil
         @tail=nil
     end
 
+    # Crea un nodo con el valor que se pasa por parámetro
+    # Y lo inserta por la cola en la lista
     def insert_tail(valor)
         aux=Nodo.new(valor, nil, nil)
         if @head==nil
@@ -26,6 +35,8 @@ class Lista
         end
     end
 
+    # Crea un nodo con el valor que se pasa por parámetro
+    # Y lo inserta por la cabeza en la lista
     def insert_head(valor)
         aux=Nodo.new(valor, nil, nil)
         if @head==nil
@@ -43,6 +54,8 @@ class Lista
         end
     end
 
+    # Crea un nodo con cada valor del vector que se pasa por parámetro
+    # Y lo inserta por la cola en la lista
     def inserts_tail(vector)
         vector.each{|valor|
             aux=Nodo.new(valor, nil, nil)
@@ -61,6 +74,8 @@ class Lista
         }
     end
 
+    # Crea un nodo con cada valor del vector que se pasa por parámetro
+    # Y lo inserta por la cabeza en la lista
     def inserts_head(vector)
         vector.reverse_each{|valor|
             aux=Nodo.new(valor, nil, nil)
@@ -80,6 +95,7 @@ class Lista
         }
     end
 
+    # Extrae el primer elemento de la lista
     def pop_head()
         nodo=@head
         aux=@head.next
@@ -88,6 +104,7 @@ class Lista
         return nodo
     end
 
+    # Extrae el último elemento de la lista
     def pop_tail()
         nodo=@tail
         aux=@tail.prev
@@ -96,6 +113,7 @@ class Lista
         return nodo
     end
 
+    # Calcula los gases totales de los elementos de la lista
     def gases()
         gas=0
         aux=@head
@@ -108,6 +126,7 @@ class Lista
         return gas
     end
     
+    # Calcula los gases anuales totales de los elementos de la lista
     def gases_anual()
         gas=0
         aux=@head
@@ -121,6 +140,7 @@ class Lista
         return gas
     end
 
+    # Calcula el uso de terreno de todos los elementos de la lista
     def terreno()
         terreno=0
         aux=@head
@@ -133,6 +153,7 @@ class Lista
         return terreno.round(1)
     end
 
+    # Método each empleado para la enumeración
     def each()
         aux=@head
 
