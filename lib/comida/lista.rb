@@ -9,7 +9,10 @@ Nodo=Struct.new(:value, :next, :prev)
 class Lista
 
     include Enumerable
-    attr_reader :head, :tail
+    #Primer elemento de la lista
+    attr_reader :head   
+    #Último elemento de la lista
+    attr_reader :tail   
     
     # Inicializa la lista vacía
     def initialize()

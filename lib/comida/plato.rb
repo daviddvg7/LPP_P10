@@ -6,7 +6,12 @@
 class Plato
 
     include Comparable
-    attr_reader :nombre, :alimentos, :cantidades
+    #Nombre del plato
+    attr_reader :nombre
+    #Lista de alimentos que componen el plato    
+    attr_reader :alimentos
+    #Lista de cantidades de los respectivos alimentos  
+    attr_reader :cantidades 
 
     # Asigna los valores de la clase
     def initialize(x, y, z)
@@ -129,8 +134,10 @@ end
 
 # Clase hija que trata los datos ambientales de los alimentos
 class Plato_hijo < Plato
-    
-    attr_reader :gases, :terreno
+    #Cantidad de gases generados por los alimentos del plato
+    attr_reader :gases
+    #Cantidad de terreno empleado por los alimentos del plato
+    attr_reader :terreno
 
     # Asigna los valores y llama al initialize de la clase padre
     def initialize(x, y, z)

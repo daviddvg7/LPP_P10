@@ -28,3 +28,14 @@ que se puedan recorrer en ambos sentidos. Esto se debe realizar empleando la met
 
 Emplear los distintos módulos para gestionar la comparación y enumeración de las clases Alimento y Lista, respectivamente.
 Además, se creará una clase para representar la información nutricional de distintos Platos, así como una que herede de esta última y contemple la eficiencia energética de los alimentos
+
+# **Lenguajes y Paradigmas de Programación**
+## **Práctica 9**
+### **Programación Funcional. Funciones de orden superior**
+#### David Valverde Gómez. PE104. 18/12/19
+
+##### *Objetivo de la práctica*
+
+Hacer uso del paradigma de programación funcional para calcular y comparar el Índice de Impacto de distintos platos de un menú nutricional
+
+

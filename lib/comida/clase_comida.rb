@@ -8,7 +8,20 @@ module Comida
   # Se ha utilizado el módulo Comparable
   class Comida
 	include Comparable
-	attr_reader :nombre, :proteinas, :carbos, :lipidos, :gases, :terreno, :kcal
+	#Nombre del alimento
+	attr_reader :nombre	
+	#Cantidad de proteínas	
+	attr_reader :proteinas	
+	#Cantidad de carbohidratos
+	attr_reader :carbos
+	#Cantidad de lípidos		
+	attr_reader :lipidos
+	#Cantidad de gases	
+	attr_reader :gases
+	#Cantidad ded terreno		
+	attr_reader :terreno
+	#Cantidad de kilocalorías	
+	attr_reader :kcal		
 
 	# Se asignan valores a las variables de instancia de la clase
 	def initialize(a, b, c, d, e, f)
