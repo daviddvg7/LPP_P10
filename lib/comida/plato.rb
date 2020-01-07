@@ -20,8 +20,11 @@ class Plato
         @cantidades=z
     end
 
+
+
+
     # Devuelve las proteínas totales del plato
-    def get_proteinas()
+    def get_proteinas() 
         i=@alimentos.head
         f=@cantidades.head
         proteinas_total=0
@@ -129,6 +132,14 @@ class Plato
     # Compara los platos por su valor energético
     def <=>(other)
         get_kcal<=> other.get_kcal
+    end
+
+    def alimento(x) 
+        @alimentos.insert_tail(x) 
+    end
+
+    def cantidad(x)
+        @cantidades.insert_tail(x)
     end
 end
 

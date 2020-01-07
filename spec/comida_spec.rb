@@ -2,7 +2,7 @@ require 'spec_helper'
 require './lib/comida/clase_comida'
 require './lib/comida/lista'
 require './lib/comida/plato'
-
+require './lib/comida/menu'
 
 RSpec.describe Comida do
  
@@ -451,5 +451,20 @@ RSpec.describe Plato do
     it "Incrementar precio" do
       expect(precios.collect{|i| i*((menu_diet.max).get_impacto)}).to eq([30, 24, 40, 36, 44])
     end
-  end
+
+    prueba= Plato.new( "prueba") do 
+      alimento carne_cordero
+      cantidad 82.3
+      alimento huevo
+      cantidad 16.2
+      alimento cerveza
+      cantidad 89.0
+    end
+    it "Prueba plato con DSL" do
+      expect(prueba.to_s).to eq("El plato prueba está compuesto de 82.3 g de carne de cordero, 16.2 g de huevo, y 89.0 g de cerveza.")
+    end
+  end 
 end
+
+
+ 
