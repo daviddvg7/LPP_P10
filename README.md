@@ -47,3 +47,6 @@ Hacer uso del paradigma de programación funcional para calcular y comparar el �
 
 Diseñar e implementar un Lenguaje de Dominio Especı́fico Domain Specific Language - DSL,
 siguiendo la filosofı́a de Ruby que permita la definición de menús diéticos diarios y semanales.
+
+
+https://coveralls.io/repos/github/daviddvg7/LPP_P10/badge.svg?branch=master(Coverage Status)!:https://coveralls.io/github/daviddvg7/LPP_P10?branch=master
