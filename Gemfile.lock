@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    comida (0.1.1)
+    comida (2.0.0)
 
 GEM
   remote: https://rubygems.org/
