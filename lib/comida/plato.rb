@@ -14,10 +14,21 @@ class Plato
     attr_reader :cantidades 
 
     # Asigna los valores de la clase
-    def initialize(x, y, z)
-        @nombre=x
-        @alimentos=y
-        @cantidades=z
+
+    def initialize(nombre, alimentos, cantidades, &block)
+        @nombre=nombre
+        @alimentos = Lista.new()
+        @cantidades= Lista.new()
+        if block_given?
+            if block.arity==1
+                yield self 
+            else    
+                instance_eval(&block)
+            end
+        else
+            @alimentos=alimentos
+            @cantidades=cantidades
+        end
     end
 
 

@@ -452,7 +452,11 @@ RSpec.describe Plato do
       expect(precios.collect{|i| i*((menu_diet.max).get_impacto)}).to eq([30, 24, 40, 36, 44])
     end
 
+<<<<<<< HEAD
     prueba= Plato.new( "prueba") do 
+=======
+    prueba= Plato.new( "prueba", l_espanola, lc_espanola) do 
+>>>>>>> desarrollo
       alimento carne_cordero
       cantidad 82.3
       alimento huevo
@@ -464,7 +468,31 @@ RSpec.describe Plato do
       expect(prueba.to_s).to eq("El plato prueba está compuesto de 82.3 g de carne de cordero, 16.2 g de huevo, y 89.0 g de cerveza.")
     end
   end 
+<<<<<<< HEAD
 end
 
+
+=======
+end
+
+RSpec.describe Menu do
+
+  menu=Menu.new("Combinado nº1") do
+    descripcion "hamburguesa, papas, refresco"
+    componente :descripcion => "Hamburguesa especial de la casa",
+               :precio => 4.25
+    componente :descripcion => "Papas pequeñas",
+               :precio => 1.75
+    componente :descripcion => "Refrescos de lata",
+               :precio => 1.50
+    precio 7.50
+    valor_nutr 550
+    valor_amb 23.2
+  end
+  
+  it "Formateo del menú" do
+    expect(menu.to_s).to eq("El menú Combinado nº1 está compuesto por:\n 1) Hamburguesa especial de la casa --> 4.25 \n 2) Papas pequeñas --> 1.75 \n 3) Refrescos de lata --> 1.5 \nPrecio: 7.5\nValor nutricional: 550 kcal\nValor ambiental: 23.2")
+  end
+end
 
  
