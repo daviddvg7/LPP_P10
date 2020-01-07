@@ -2,7 +2,7 @@ require 'spec_helper'
 require './lib/comida/clase_comida'
 require './lib/comida/lista'
 require './lib/comida/plato'
-
+require './lib/comida/menu'
 
 RSpec.describe Comida do
  
@@ -176,7 +176,7 @@ RSpec.describe Lista do
     end
   end
 
-  context "Probando dietas" do
+  context "Probando dietas" do 
     it "Crear expectativas para estimar las emisiones diarias de gases de efecto invernadero para cada dieta." do
       expect(espanola.gases()).to eql(75.3)
       expect(vasca.gases()).to eql(7.3)
@@ -239,7 +239,7 @@ RSpec.describe Lista do
   it "Enumeraciones" do
     expect(prueba.collect{|n| n.proteinas>20}).to eq([true, false, false])
     expect(prueba.select{|i| i.proteinas>20}).to eq([carne_de_vaca])
-    expect(prueba.max).to eq(carne_cordero)
+    expect(prueba.max).to eq(carne_cordero) 
     expect(prueba.min).to eq(camarones)
     expect(prueba.sort).to eq([camarones, carne_de_vaca, carne_cordero])
   end
@@ -339,7 +339,9 @@ RSpec.describe Plato_hijo do
       expect(plato2.is_a? Plato).to eq(true)
     end
   end
+end
 
+RSpec.describe Plato do
   context "Comparaciones de platos" do
 
     carne_de_vaca=Comida::Comida.new("carne de vaca", 21.1, 0.0, 3.1, 50.0, 164.0)
@@ -449,5 +451,38 @@ RSpec.describe Plato_hijo do
     it "Incrementar precio" do
       expect(precios.collect{|i| i*((menu_diet.max).get_impacto)}).to eq([30, 24, 40, 36, 44])
     end
+
+    prueba= Plato.new( "prueba", l_espanola, lc_espanola) do 
+      alimento carne_cordero
+      cantidad 82.3
+      alimento huevo
+      cantidad 16.2
+      alimento cerveza
+      cantidad 89.0
+    end
+    it "Prueba plato con DSL" do
+      expect(prueba.to_s).to eq("El plato prueba está compuesto de 82.3 g de carne de cordero, 16.2 g de huevo, y 89.0 g de cerveza.")
+    end
+  end 
+end
+
+RSpec.describe Menu do
+
+  menu=Menu.new("Combinado nº1") do
+    descripcion "hamburguesa, papas, refresco"
+    componente :descripcion => "Hamburguesa especial de la casa",
+               :precio => 4.25
+    componente :descripcion => "Papas pequeñas",
+               :precio => 1.75
+    componente :descripcion => "Refrescos de lata",
+               :precio => 1.50
+    precio 7.50
+    valor_nutr 550
+    valor_amb 23.2
+  end
+  
+  it "Formateo del menú" do
+    expect(menu.to_s).to eq("El menú Combinado nº1 está compuesto por:\n 1) Hamburguesa especial de la casa --> 4.25 \n 2) Papas pequeñas --> 1.75 \n 3) Refrescos de lata --> 1.5 \nPrecio: 7.5\nValor nutricional: 550 kcal\nValor ambiental: 23.2")
   end
 end
+ 
