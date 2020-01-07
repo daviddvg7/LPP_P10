@@ -38,4 +38,12 @@ Además, se creará una clase para representar la información nutricional de di
 
 Hacer uso del paradigma de programación funcional para calcular y comparar el Índice de Impacto de distintos platos de un menú nutricional
 
+# **Lenguajes y Paradigmas de Programación**
+## **Práctica 10**
+### **Lenguajes de Dominio Específico**
+#### David Valverde Gómez. PE104. 8/1/20
 
+##### *Objetivo de la práctica*
+
+Diseñar e implementar un Lenguaje de Dominio Especı́fico Domain Specific Language - DSL,
+siguiendo la filosofı́a de Ruby que permita la definición de menús diéticos diarios y semanales.
