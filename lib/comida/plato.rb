@@ -6,17 +6,33 @@
 class Plato
 
     include Comparable
-    attr_reader :nombre, :alimentos, :cantidades
+    #Nombre del plato
+    attr_reader :nombre
+    #Lista de alimentos que componen el plato    
+    attr_reader :alimentos
+    #Lista de cantidades de los respectivos alimentos  
+    attr_reader :cantidades 
 
     # Asigna los valores de la clase
-    def initialize(x, y, z)
-        @nombre=x
-        @alimentos=y
-        @cantidades=z
+
+    def initialize(nombre, alimentos, cantidades, &block)
+        @nombre=nombre
+        @alimentos = Lista.new()
+        @cantidades= Lista.new()
+        if block_given?
+            if block.arity==1
+                yield self 
+            else    
+                instance_eval(&block)
+            end
+        else
+            @alimentos=alimentos
+            @cantidades=cantidades
+        end
     end
 
     # Devuelve las proteínas totales del plato
-    def get_proteinas()
+    def get_proteinas() 
         i=@alimentos.head
         f=@cantidades.head
         proteinas_total=0
@@ -30,8 +46,8 @@ class Plato
             f=f.next
         break if i==nil
         end
-        @proteinas=((proteinas_total/cantidad_total)*100).round(1)
-        return "#{@proteinas}%"
+        proteinas=((proteinas_total/cantidad_total)*100).round(1)
+        return "#{proteinas}%"
     end
 
     # Devuelve los lípidos totales del plato
@@ -49,8 +65,8 @@ class Plato
             f=f.next
         break if i==nil
         end
-        @lipidos=((lipidos_total/cantidad_total)*100).round(1)
-        return "#{@lipidos}%"
+        lipidos=((lipidos_total/cantidad_total)*100).round(1)
+        return "#{lipidos}%"
     end
 
     # Devuelve los carbohidratos totales del plato
@@ -68,8 +84,8 @@ class Plato
             f=f.next
         break if i==nil
         end
-        @carbos=((carbos_total/cantidad_total)*100).round(1)
-        return "#{@carbos}%"
+        carbos=((carbos_total/cantidad_total)*100).round(1)
+        return "#{carbos}%"
     end
 
     # Devuelve las kilocalorías totales del plato
@@ -125,51 +141,65 @@ class Plato
     def <=>(other)
         get_kcal<=> other.get_kcal
     end
+
+    def alimento(x) 
+        @alimentos.insert_tail(x) 
+    end
+
+    def cantidad(x)
+        @cantidades.insert_tail(x)
+    end
 end
 
 # Clase hija que trata los datos ambientales de los alimentos
 class Plato_hijo < Plato
+    #Cantidad de gases generados por los alimentos del plato
+    attr_reader :gases
+    #Cantidad de terreno empleado por los alimentos del plato
+    attr_reader :terreno
 
     # Asigna los valores y llama al initialize de la clase padre
     def initialize(x, y, z)
         super(x, y, z)
+        @gases=self.get_gases
+        @terreno=self.get_terreno
     end
 
     # Devuelve los gases totales del plato
     def get_gases()
         i=@alimentos.head
         f=@cantidades.head
-        @gases_total=0
+        gases_total=0
 
         loop do
             aux=(i.value).gases*(f.value/1000)
-            @gases_total+=aux            
+            gases_total+=aux            
             i=i.next
             f=f.next
         break if i==nil
         end
-        return @gases_total.round(1)
+        return gases_total.round(1)
     end
 
     # Devuelve el uso de terreno total del plato
     def get_terreno()
         i=@alimentos.head
         f=@cantidades.head
-        @terreno_total=0
+        terreno_total=0
 
         loop do
             aux=(i.value).terreno*(f.value/1000)
-            @terreno_total+=aux            
+            terreno_total+=aux            
             i=i.next
             f=f.next
         break if i==nil
         end
-        return @terreno_total.round(1)
+        return terreno_total.round(1)
     end
 
     # Devuelve el plato formateado con sus datos de gases y uso de terreno
     def to_s
-        "El plato #{@nombre} genera #{@gases_total.round(1)} kg de CO2 y requiere #{@terreno_total.round(1)} m2 de terreno"
+        "El plato #{@nombre} genera #{@gases} kg de CO2 y requiere #{@terreno} m2 de terreno"
     end
 
     # Devuelve la huella ambiental del plato
